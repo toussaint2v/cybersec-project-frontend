@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.card-simple{
+    @apply bg-white shadow-md rounded px-8 pt-6 pb-8 shadow rounded p-5 ;
+    background-color: var(--background-color-secondary);
+}
+
+.input-card{
+    @apply shadow appearance-none rounded-xl w-full py-2 px-3;
+    background-color: var(--background-color-primary);
+    color: var(--text-primary-color) ;
+}
+
+.input-simple{
+    @apply shadow appearance-none rounded-xl w-full py-2 px-3;
+    background-color: var(--background-color-secondary);
+    color: var(--text-primary-color) ;
+}
+
+.bt-simple{
+    @apply font-bold py-2 px-4 rounded-lg  duration-300;
+}
+
+.bt-danger{
+    @apply font-bold py-2 px-4 rounded-lg bg-red-500 duration-300 text-white hover:bg-red-700 duration-200;
+}
+
+/* route transitions */
+.route-enter-from {
+  opacity : 0 ;
+}
+.route-enter-active {
+  transition : all 0.1s ease-in ;
+}
+.route-leave-to {
+  opacity : 0 ;
+}
+.route-leave-active {
+  transition : all 0.1s ease-out ;
+}
