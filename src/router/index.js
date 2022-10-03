@@ -57,15 +57,14 @@ router.beforeEach((to, from, next) => {
       });
     }
     next();
-  } else {
-    if(to.matched.some(record => record.meta.requiresGuest)) {
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
       if (localStorage.getItem('authenticated')){
         next({
           path: '/'
         });
       }
-    }
-      next();
+  }else {
+    next();
   }
 });
 
