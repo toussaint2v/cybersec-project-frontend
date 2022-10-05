@@ -63,7 +63,7 @@
                 }else
                   this.state.error = "Une erreur est survenu"
               }).catch((err) => {
-                this.state.error = err.response.data
+                this.state.error = err.response.data['message']
               }).finally(() => {
                 this.state.loading =  false;
               });
