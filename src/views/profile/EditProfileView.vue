@@ -99,9 +99,7 @@ export default {
 
     editProfile(){
       axios.get('api/profile/edit').then((res) =>{
-        this.form = res.data
-        console.log(res)
-
+        this.form = res.data.data
       }).catch((error) => {
         console.log(error)
         this.state.error = error.response.data;
@@ -112,7 +110,6 @@ export default {
 
     updateProfile(){
       this.state.loading = true;
-      console.log(this.form)
       axios.post('api/profile/update', this.form).then((res) =>{
         console.log(res.data)
         this.editProfile();

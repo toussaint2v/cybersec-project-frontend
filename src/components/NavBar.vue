@@ -12,7 +12,7 @@
           <router-link v-if="!isAuthenticated"  class="w-44" to="/profile/create" >Créer un compte</router-link>
           <router-link v-if="!isAuthenticated" class="w-44" to="/login" >Connexion</router-link>
 
-          <SwitchCheckbox class="mySwitch w-44" v-on:change="toggleTheme" />
+
         </div>
       </div>
     <!-- mobile -->
@@ -34,13 +34,10 @@
 
 <script>
 import store from "@/store";
-import SwitchCheckbox from "@/components/SwitchCheckbox";
 
 export default {
   name: 'NavBar',
-  components:{
-    SwitchCheckbox
-  },
+  
   data: function(){
     return{
       navToggler: null,
@@ -87,9 +84,6 @@ export default {
       this.lastScrollPosition = document.documentElement.scrollTop;
     },
   
-    toggleTheme() {
-      this.$store.dispatch('toggleTheme');
-    },
   },
   beforeUnmount () {
     window.removeEventListener('scroll', this.onScroll)

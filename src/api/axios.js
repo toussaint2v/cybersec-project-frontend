@@ -12,9 +12,6 @@ instance.interceptors.request.use(
         if(store.getters.userToken) {
             config.headers['Authorization'] = store.getters.userToken;
         }
-        if (store.getters.user){
-            config.headers['UserId'] = store.getters.user['id'];
-        }
 
         return config;
     },
@@ -29,7 +26,6 @@ instance.interceptors.response.use(function (response) {
     // Do something with response data
     return response;
 }, function (error) {
-
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     if (error.response.status === 401){
