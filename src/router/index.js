@@ -4,6 +4,7 @@ import CreateProfileView from "@/views/profile/CreateProfileView";
 import LoginView from "@/views/auth/LoginView";
 import EditProfileView from "@/views/profile/EditProfileView";
 import MenuProfileView from "@/views/profile/MenuProfileView";
+import FriendView from "@/views/friend/FriendView";
 
 const routes = [
   {
@@ -39,6 +40,12 @@ const routes = [
     path: '/profile/edit',
     name: 'profile',
     component: EditProfileView,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/friends',
+    name: 'friend',
+    component: FriendView,
     meta: { requiresAuth: true },
   }
 ]

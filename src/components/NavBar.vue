@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pb-16">
+  <div class="md:pb-20">
     <!-- site-navbar start -->
     <nav class="md:bottom-auto bottom-0 h-16" :class="{ 'hidden-navbar': !showNavbar && navIsOpen, 'visible-navbar' : showNavbar && navIsOpen }">
     <!-- classic -->
@@ -64,10 +64,7 @@ export default {
 
     this.lastScrollPosition = document.documentElement.scrollTop;
     window.addEventListener('scroll', this.onScroll);
-    const viewportMeta = document.createElement('meta');
-    viewportMeta.name = 'viewport';
-    viewportMeta.content = 'width=device-width, initial-scale=1';
-    document.head.appendChild(viewportMeta);
+
 
   },
 
