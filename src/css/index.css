@@ -28,6 +28,7 @@
     @apply font-bold py-2 px-4 rounded-lg bg-red-500 duration-300 text-white hover:bg-red-700 duration-200;
 }
 
+
 /* route transitions */
 .route-enter-from {
   opacity : 0 ;

@@ -6,9 +6,18 @@
       <div v-for="profile in profiles" :key="profile" class="mt-2">
         <span class="flex justify-between">
             {{ profile.name }}
-          <button @click="sendInvitaion()" type="button" class="bt-simple bg-gray-200 border hover:border-gray-600">
+
+           <div class="flex" v-if="profile.accepted === 0">
+            <button class="bt-simple bg-red-200 mx-2">Annuler</button>
+            <div class="bt-simple bg-gray-200">Invitation Envoyé</div>
+          </div>
+          <button v-else-if="!profile.accepted" @click="sendInvitaion(profile.id)" type="button" class="bt-simple bg-gray-200 border hover:border-gray-600">
             Envoyer une invitation
           </button>
+          <div class="flex" v-else>
+            <button class="bt-simple bg-red-200 mx-2">Supprimer</button>
+            <div class="bt-simple bg-gray-200">Vous êtes amis</div>
+          </div>
         </span>
         <hr class="mt-2">
       </div>
@@ -20,9 +29,11 @@
 
 <script>
 import axios from "@/api/axios";
+import store from "@/store";
 export default {
   name: "FriendView",
   mounted() {
+    console.log()
     //this.getAllProfile();
   },
   data(){
@@ -34,6 +45,7 @@ export default {
       },
       form:{
         search: null,
+        idProfile: store.state.user.id
       },
 
       profilesList: null
@@ -49,6 +61,7 @@ export default {
       this.state.loading = true;
       if (this.form.search !== ''){
         await axios.post('/api/profiles/search', this.form).then((res) => {
+          console.log(res)
           if(res.data.data.length > 0){
             this.profilesList = res.data.data;
           }else{
@@ -64,8 +77,13 @@ export default {
         this.profilesList = null
       }
     },
-    async sendInvitaion(){
-
+    async sendInvitaion(profileId){
+      var formInvit = {}
+      formInvit.from = store.state.user.id
+      formInvit.to = profileId
+      await axios.post('/api/invitation/send', formInvit).then(() => {
+        this.getAllProfile();
+      })
     }
   }
 }
