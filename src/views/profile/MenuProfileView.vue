@@ -29,6 +29,7 @@
 </template>
 
 <script>
+
 import SwitchCheckbox from "@/components/SwitchCheckbox";
 import store from "@/store";
 export default {

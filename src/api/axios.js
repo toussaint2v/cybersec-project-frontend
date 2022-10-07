@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../store/index'
 
 const instance = axios.create({
-    baseURL: 'http://cyber_sec_backend.test',
+    baseURL: 'http://localhost:8081',
     withCredentials: true
 });
 
@@ -12,7 +12,6 @@ instance.interceptors.request.use(
         if(store.getters.userToken) {
             config.headers['Authorization'] = store.getters.userToken;
         }
-
         return config;
     },
     error => {

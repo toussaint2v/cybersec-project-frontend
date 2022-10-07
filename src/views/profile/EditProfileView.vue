@@ -82,7 +82,6 @@ export default {
         birthDate: null,
         age: null,
         address: null
-
       },
       response: '',
       state:{
@@ -99,9 +98,8 @@ export default {
 
     editProfile(){
       axios.get('api/profile/edit').then((res) =>{
-        this.form = res.data.data
+        this.form = res.data
       }).catch((error) => {
-        console.log(error)
         this.state.error = error.response.data;
       }).finally(() => {
         this.state.loading =  false;
@@ -110,8 +108,7 @@ export default {
 
     updateProfile(){
       this.state.loading = true;
-      axios.post('api/profile/update', this.form).then((res) =>{
-        console.log(res.data)
+      axios.post('api/profile/update', this.form).then(() =>{
         this.editProfile();
       }).finally(() => {
         this.state.loading =  false;

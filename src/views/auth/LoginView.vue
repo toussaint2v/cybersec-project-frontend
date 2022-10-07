@@ -57,11 +57,12 @@
             async login() {
               this.state.loading =  true;
               await axios.post('api/login', this.form).then((res) => {
-                console.log(res)
-                if (res.data.message && res.data.message === 'Connexion réussie' ){
+                if (res.data && res.data === 'Connexion réussie' ){
                   this.$store.commit('authenticateUser', res.data);
-                }else
+                }else{
+                  console.error(res.data)
                   this.state.error = "Une erreur est survenu"
+                }
               }).catch((err) => {
                 this.state.error = err.response.data['message']
               }).finally(() => {

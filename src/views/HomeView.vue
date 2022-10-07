@@ -21,17 +21,11 @@
 <script>
 // @ is an alias to /src
 
-import axios from "@/api/axios";
 import store from "@/store";
 
 export default {
   name: 'HomeView',
   methods:{
-    async test(){
-      await axios.get('private').then((res) => {
-        console.log(res)
-      });
-    },
 
   },
   computed: {

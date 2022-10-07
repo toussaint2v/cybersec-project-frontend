@@ -92,7 +92,6 @@ export default {
             store.commit('unauthenticateUser');
             router.push('/login')
           }).catch((error) => {
-            console.log(error)
             this.state.error = error.response.data;
           }).finally(() => {
             this.state.loading =  false;

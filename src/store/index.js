@@ -35,10 +35,10 @@ const mutations = {
   authenticateUser(state, data) {
     state.authenticated  = true;
     state.token = data['token'];
-    state.user = data.profile.data;
+    state.user = data.profile;
     localStorage.setItem('authenticated', true);
     localStorage.setItem('token', data['token']);
-    localStorage.setItem('user', JSON.stringify(data.profile.data));
+    localStorage.setItem('user', JSON.stringify(data.profile));
 
   },
   unauthenticateUser() {
