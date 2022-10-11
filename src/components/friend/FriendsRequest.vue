@@ -4,11 +4,8 @@
     <div v-if="invitationsList">
       <div v-for="invitation in invitationsList" :key="invitation">
         {{ invitation.username }}
-<<<<<<< HEAD
         <button class="bt-danger" @click="deleteInvitation(invitation.from, invitation.to)">Refuser</button>
         <button class="bt-simple bg-green-600">Accepter</button>
-=======
->>>>>>> origin/master
       </div>
     </div>
   </div>
@@ -33,7 +30,6 @@ export default {
         this.invitationsList = res.data
       })
     },
-<<<<<<< HEAD
     async deleteInvitation(from, to){
       var form = new FormData();
       form.append('from', from);
@@ -47,8 +43,6 @@ export default {
         this.getInvitaion();
       })
     },
-=======
->>>>>>> origin/master
   }
 }
 </script>

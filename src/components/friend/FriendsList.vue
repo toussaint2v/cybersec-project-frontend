@@ -13,7 +13,7 @@
 import axios from "@/api/axios";
 
 export default {
-  name: "FrindsList",
+  name: "FriendsList",
   data() {
     return {
       friendsList: null
