@@ -1,7 +1,7 @@
 <template>
-  <div class="pt-16 px-2">
+  <div class="pt-16 px-2 flex justify-center">
 
-    <form @submit.prevent="login" class="card-simple mx-auto max-w-md">
+    <form @submit.prevent="login" class="card-simple w-full sm:w-1/2 md:w-2/5 lg:w-[400px]">
       <h1 class="bold text-center text-2xl">Se Connecter</h1>
       <div class="border w-3/4 mx-auto my-4 border-fuchsia-800"></div>
       <ErrorComponent v-if="state.error" :error="state.error"/>

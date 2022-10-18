@@ -1,6 +1,6 @@
 <template>
-    <div class="pt-6 px-2">
-      <form @submit.prevent="createProfile" class="card-simple mx-auto sm:max-w-xl">
+    <div class="pt-6 px-2 flex justify-center">
+      <form @submit.prevent="createProfile" class="card-simple sm:max-w-xl">
         <h1 class="bold text-center text-2xl">Créer Mon Compte</h1>
         <div class="border w-3/4 mx-auto my-4 border-fuchsia-800"></div>
         <ErrorComponent v-if="state.error" :error="state.error"/>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card-simple w-1/2 ">
+  <div class="card-simple md:w-1/2 ">
     <h1 class="font-bold">Mes amis</h1>
     <div v-if="friendsList.length">
       <div v-for="friend in friendsList" :key="friend">

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="flex justify-evenly m-8 space-x-2">
+  <div class="md:flex justify-evenly p-8 md:space-x-2 ">
     <FriendsList />
 
     <FriendsRequest />
