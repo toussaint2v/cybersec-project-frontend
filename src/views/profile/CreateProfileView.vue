@@ -48,7 +48,7 @@
         </div>
 
         <div class="flex items-center justify-between">
-          <button class="bt-simple bg-blue-500 hover:bg-blue-900 ml-auto" type="button">
+          <button class="bt-simple bg-blue-500 hover:bg-blue-900 ml-auto" type="submit">
             Créer
           </button>
         </div>
