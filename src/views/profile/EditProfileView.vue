@@ -2,7 +2,7 @@
   <div class="container m-auto p-3">
     <h1 class="bold text-center text-2xl">Modifier Mon Compte</h1>
     <div class="border w-3/4 mx-auto my-4 border-fuchsia-800"></div>
-    <div class="w-10/12 mx-auto">
+    <form @submit.prevent="updateProfile" class="w-10/12 mx-auto">
        <ErrorComponent v-if="state.error" :error="state.error"/>
 
       <div class="grid grid-cols-2 md:w-2/3 mb-4">
@@ -51,16 +51,10 @@
 
 
       </div>
-    <div class="">
-      <ButtonLoading class="ml-auto" :loading="state.loading" @click="updateProfile" value="Modifier" />
-    </div>
-    </div>
-   
-
-
-    
-
-
+      <div class="">
+        <ButtonLoading class="ml-auto" :loading="state.loading" value="Modifier" />
+      </div>
+    </form>
   </div>
 
 </template>

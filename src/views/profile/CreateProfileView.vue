@@ -1,6 +1,6 @@
 <template>
     <div class="pt-6 px-2">
-      <div class="card-simple mx-auto sm:max-w-xl">
+      <form @submit.prevent="createProfile" class="card-simple mx-auto sm:max-w-xl">
         <h1 class="bold text-center text-2xl">Créer Mon Compte</h1>
         <div class="border w-3/4 mx-auto my-4 border-fuchsia-800"></div>
         <ErrorComponent v-if="state.error" :error="state.error"/>
@@ -48,12 +48,12 @@
         </div>
 
         <div class="flex items-center justify-between">
-          <button  @click="createProfile" class="bt-simple bg-blue-500 hover:bg-blue-900 ml-auto" type="button">
+          <button class="bt-simple bg-blue-500 hover:bg-blue-900 ml-auto" type="button">
             Créer
           </button>
         </div>
 
-      </div>
+      </form>
     </div>
 
 </template>
