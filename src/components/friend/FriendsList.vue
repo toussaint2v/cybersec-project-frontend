@@ -31,7 +31,6 @@ export default {
     async getFriends(){
       await axios.get('/api/friends', { params: {idProfile: store.getters.user.id } }).then((res) => {
         this.friendsList = res.data
-        console.log(res.data)
       })
     },
     async deleteInvitation(from, to){
@@ -40,8 +39,7 @@ export default {
         from: from,
         to: to
         }
-      }).then((res) => {
-        console.log(res)
+      }).then(() => {
         this.getFriends();
       })
     },

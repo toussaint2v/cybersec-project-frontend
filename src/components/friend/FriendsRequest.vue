@@ -5,7 +5,7 @@
       <div v-for="invitation in invitationsList" :key="invitation">
         {{ invitation.username }}
         <button class="bt-danger" @click="deleteInvitation(invitation.from, invitation.to)">Refuser</button>
-        <button class="bt-simple bg-green-600">Accepter</button>
+        <button class="bt-simple bg-green-600" @click="acceptInvitation(invitation.from, invitation.to)">Accepter</button>
       </div>
     </div>
     <p class="text-neutral-500" v-else>
@@ -38,8 +38,17 @@ export default {
           from: from,
           to: to
         }
-      }).then((res) => {
-        console.log(res)
+      }).then(() => {
+        this.getInvitaion();
+      })
+    },
+    async acceptInvitation(from, to){
+      var formInvit = {}
+      formInvit.from = from
+      formInvit.to = to
+
+      await axios.post('/api/invitation/accept', formInvit).then(() => {
+        window.location.reload();
         this.getInvitaion();
       })
     },

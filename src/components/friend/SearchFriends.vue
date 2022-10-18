@@ -10,7 +10,7 @@
             {{ profile.name }}
 
            <div class="flex" v-if="profile.accepted === 0">
-            <button class="bt-simple bg-red-200 mx-2">Annuler</button>
+            <button class="bt-simple bg-red-200 mx-2" @click="deleteInvitation(profile.from, profile.to)">Annuler</button>
             <div class="bt-simple bg-gray-200">Invitation Envoyé</div>
           </div>
           <button v-else-if="!profile.accepted" @click="sendInvitaion(profile.id)" type="button" class="bt-simple bg-gray-200 border hover:border-gray-600">
@@ -82,6 +82,15 @@ export default {
       formInvit.from = store.state.user.id
       formInvit.to = profileId
       await axios.post('/api/invitation/send', formInvit).then(() => {
+        this.getAllProfile();
+      })
+    },
+    async deleteInvitation(from, to){
+      await axios.delete('/api/invitation/destroy', { params: {
+          from: from,
+          to: to
+        }
+      }).then(() => {
         this.getAllProfile();
       })
     },
