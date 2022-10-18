@@ -6,6 +6,12 @@
         <i class="fa-solid fa-user fa-2xl mt-3"></i>
       </router-link>
       <router-link to="/friends" class="item">
+        <div class="absolute right-4 top-4">
+          <span v-if="invitationNotif" class="flex h-5 w-5 relative ml-auto">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-5 w-5 bg-purple-500 text-center justify-center grid content-center text-white">{{ invitationNotif }}</span>
+        </span>
+        </div>
         <div>Amis</div>
         <i class="fa-solid fa-user-group fa-2xl mt-3"></i>
       </router-link>
@@ -32,16 +38,19 @@
 
 import SwitchCheckbox from "@/components/SwitchCheckbox";
 import store from "@/store";
+import axios from "@/api/axios";
 export default {
   name: "menuProfileView",
   components: {SwitchCheckbox},
   data(){
     return{
-      theme: ""
+      theme: "",
+      invitationNotif: null
     }
   },
   mounted() {
     this.getTheme();
+    this.getInvitationNotif();
   },
   methods:{
     logout(){
@@ -56,6 +65,12 @@ export default {
         this.theme = "Claire"
       else
         this.theme = "Sombre"
+    },
+    async getInvitationNotif(){
+      await axios.get('api/invitation/count', {params: {profileId: store.getters.user.id}})
+          .then((res) => {
+            this.invitationNotif = res.data.notif;
+          })
     }
   }
 }
@@ -63,7 +78,7 @@ export default {
 
 <style scoped>
 .item{
-  @apply h-36 w-36  rounded-2xl m-2 p-5 shadow shadow-fuchsia-500 font-bold ;
+  @apply h-36 w-36  rounded-2xl m-2 p-5 shadow shadow-fuchsia-500 font-bold relative;
   background: var(--background-color-secondary);
 }
 

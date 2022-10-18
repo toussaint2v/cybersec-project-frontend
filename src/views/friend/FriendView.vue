@@ -14,11 +14,13 @@
 import FriendsRequest from "@/components/friend/FriendsRequest";
 import SearchFriends from "@/components/friend/SearchFriends";
 import FriendsList from "@/components/friend/FriendsList";
+import axios from "@/api/axios";
+import store from "@/store";
 export default {
   name: "FriendView",
   components: {FriendsList, SearchFriends, FriendsRequest},
   mounted() {
-    //this.getAllProfile();
+    this.openAllInvitation()
   },
   data(){
     return {
@@ -31,8 +33,12 @@ export default {
 
   },
   methods: {
+    async openAllInvitation(){
+      var formInvit = {}
+      formInvit.profileId = store.getters.user.id
 
-
+      await axios.post('/api/invitations/open', formInvit);
+    }
 
   }
 }
