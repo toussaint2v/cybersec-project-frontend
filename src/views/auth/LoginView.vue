@@ -16,7 +16,7 @@
         <label class="block text-sm font-bold mb-2" for="password">
           Mot de Passe
         </label>
-        <input required v-model="form.password" class="input-card" id="password" type="password"
+        <input v-model="form.password" class="input-card" id="password" type="password"
                placeholder="**************">
       </div>
       <div class="">
@@ -36,7 +36,7 @@
 <script>
 import axios from "@/api/axios";
 import router from "@/router";
-import ErrorComponent from "@/components/ErrorComponent";
+import ErrorComponent from "@/components/alert/ErrorComponent";
 import ButtonLoading from "@/components/form/ButtonLoading";
 
 
@@ -66,7 +66,7 @@ export default {
           this.state.error = "Une erreur est survenu"
         }
       }).catch((err) => {
-        this.state.error = err.response.data['message']
+        this.state.error = err.response.data
       }).finally(() => {
         this.state.loading = false;
       });

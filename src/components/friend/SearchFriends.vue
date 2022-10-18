@@ -1,6 +1,9 @@
 <template>
   <div class="w-5/6 relative mx-auto">
-    <input type="search" class="search-input input-simple" @keyup="getAllProfile()" v-model="form.search">
+    <div class="relative">
+      <input placeholder="Rechercher un ami" type="search" class="search-input input-simple" @keyup="getAllProfile()" v-model="form.search">
+      <i class="fa-solid fa-search fa-xl absolute right-3 top-2 text-neutral-500"></i>
+    </div>
     <div v-if="profiles" class="absolute bg-white text-black w-full p-4 rounded mt-2">
       <div v-for="profile in profiles" :key="profile" class="mt-2">
         <span class="flex justify-between">
@@ -14,7 +17,6 @@
             Envoyer une invitation
           </button>
           <div class="flex" v-else>
-            <button class="bt-simple bg-red-200 mx-2">Supprimer</button>
             <div class="bt-simple bg-gray-200">Vous êtes amis</div>
           </div>
         </span>
@@ -56,7 +58,10 @@ export default {
     async getAllProfile() {
       this.state.loading = true;
       if (this.form.search !== null && this.form.search !== ''){
-        await axios.post('/api/profiles/search', this.form).then((res) => {
+        await axios.get('/api/profiles/search', {params: {
+            search: this.form.search,
+            idProfile: store.getters.user.id
+        }}).then((res) => {
           if(res.data.length > 0){
             this.profilesList = res.data;
           }else{

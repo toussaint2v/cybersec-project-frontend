@@ -1,13 +1,16 @@
 <template>
   <div class="card-simple w-1/2 ">
     <h1 class="font-bold">Mes demandes</h1>
-    <div v-if="invitationsList">
+    <div v-if="invitationsList.length">
       <div v-for="invitation in invitationsList" :key="invitation">
         {{ invitation.username }}
         <button class="bt-danger" @click="deleteInvitation(invitation.from, invitation.to)">Refuser</button>
         <button class="bt-simple bg-green-600">Accepter</button>
       </div>
     </div>
+    <p class="text-neutral-500" v-else>
+      Vous n'avez auncune demandes
+    </p>
   </div>
 </template>
 
@@ -18,7 +21,7 @@ export default {
   name: "FriendsRequest",
   data() {
     return {
-      invitationsList: null
+      invitationsList: []
     }
   },
   mounted() {
@@ -31,14 +34,11 @@ export default {
       })
     },
     async deleteInvitation(from, to){
-      var form = new FormData();
-      form.append('from', from);
-      form.append('to', to);
-      var options = { content: form };
-      console.log(options)
-
-
-      await axios.post('/api/invitation/destroy', {form}).then((res) => {
+      await axios.delete('/api/invitation/destroy', { params: {
+          from: from,
+          to: to
+        }
+      }).then((res) => {
         console.log(res)
         this.getInvitaion();
       })
