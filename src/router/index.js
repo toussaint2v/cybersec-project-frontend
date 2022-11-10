@@ -5,6 +5,8 @@ import LoginView from "@/views/auth/LoginView";
 import EditProfileView from "@/views/profile/EditProfileView";
 import MenuProfileView from "@/views/profile/MenuProfileView";
 import FriendView from "@/views/friend/FriendView";
+import SendEmailView from "@/views/auth/password/SendEmailView";
+import ResetPasswordView from "@/views/auth/password/ResetPasswordView";
 
 const routes = [
   {
@@ -47,6 +49,18 @@ const routes = [
     name: 'friend',
     component: FriendView,
     meta: { requiresAuth: true },
+  },
+  {
+    path: '/reset-password/email/send',
+    name: 'sendEmail',
+    component: SendEmailView,
+    meta: { requiresGuest: true },
+  },
+  {
+    path: '/reset-password',
+    name: 'resetPassword',
+    component: ResetPasswordView,
+    meta: { requiresGuest: true },
   }
 ]
 

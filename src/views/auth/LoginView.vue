@@ -23,6 +23,10 @@
         <ButtonLoading class="mx-auto" :loading="state.loading"
                        value="Connexion"/>
       </div>
+      <div class="flex justify-end mt-4">
+        <router-link class="text-purple-700 hover:text-purple-900" to="/reset-password/email/send">Reinitialiser mot de passe</router-link>
+      </div>
+
       <div class="border my-3"></div>
       <div class="text-center">
         <router-link to="/profile/create" class="bt-simple bg-gray-100 hover:bg-gray-400 text-black " type="button">
