@@ -9,7 +9,7 @@
         <span class="flex justify-between">
             {{ profile.name }}
 
-           <div class="flex" v-if="profile.accepted === 0">
+           <div class="flex" v-if="profile.accepted == 0">
             <button class="bt-simple bg-red-200 mx-2" @click="deleteInvitation(profile.from, profile.to)">Annuler</button>
             <div class="bt-simple bg-gray-200">Invitation Envoyé</div>
           </div>

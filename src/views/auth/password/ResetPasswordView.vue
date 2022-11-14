@@ -14,7 +14,7 @@
                placeholder="**************">
       </div>
       <div class="">
-        <ButtonLoading class="mx-auto" :loading="state.loading" value="Envoyer"/>
+        <ButtonLoading class="mx-auto" :loading="state.loading" value="Confirmer"/>
       </div>
     </form>
   </div>
@@ -49,7 +49,7 @@ export default {
       this.form.email = this.$route.query.email
       this.form.password_token = this.$route.query.password_token
       await axios.post('api/reset-password/store', this.form).then((res) => {
-        if (res.data === 'OK'){
+        if (res.data == 'OK'){
           router.push('/login');
         }
       }).catch((err) => {

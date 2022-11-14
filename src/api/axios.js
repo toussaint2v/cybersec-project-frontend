@@ -2,7 +2,8 @@ import axios from 'axios'
 import store from '../store/index'
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8082',
+    //baseURL: 'https://api.cyber-sec-project.carlotti-toussaint.com',
+    baseURL: 'http://localhost:8081',
     withCredentials: true
 });
 

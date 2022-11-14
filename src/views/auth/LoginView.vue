@@ -63,7 +63,7 @@ export default {
     async login() {
       this.state.loading = true;
       await axios.post('api/login', this.form).then((res) => {
-        if (res.data && res.data.message === 'Connexion réussie') {
+        if (res.data && res.data.message == 'Connexion réussie') {
           this.$store.commit('authenticateUser', res.data);
         } else {
           console.error(res.data)

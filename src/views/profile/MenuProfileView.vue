@@ -7,7 +7,7 @@
       </router-link>
       <router-link to="/friends" class="item">
         <div class="absolute right-4 top-4">
-          <span v-if="invitationNotif" class="flex h-5 w-5 relative ml-auto">
+          <span v-if="invitationNotif > 0" class="flex h-5 w-5 relative ml-auto">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-5 w-5 bg-purple-500 text-center justify-center grid content-center text-white">{{ invitationNotif }}</span>
         </span>
@@ -61,7 +61,7 @@ export default {
       this.getTheme();
     },
     getTheme(){
-      if (store.getters.getUserTheme === "light-theme")
+      if (store.getters.getUserTheme == "light-theme")
         this.theme = "Claire"
       else
         this.theme = "Sombre"
