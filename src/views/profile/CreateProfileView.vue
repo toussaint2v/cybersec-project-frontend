@@ -19,6 +19,20 @@
             <input v-model="form.first_name" class="input-card" id="firstName" type="text" >
           </div>
         </div>
+        <div class="mb-4 flex">
+          <div class="mr-2 w-full">
+            <label class=" block text-grey-darker text-sm font-bold mb-2" for="name">
+              Adresse
+            </label>
+            <input v-model="form.address" class="input-card" id="address" type="text" >
+          </div>
+          <div class="ml-2 ">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="birthDate">
+              Date de Naissance
+            </label>
+            <input v-model="form.birthDate" class="input-card" id="birthDate" type="date" >
+          </div>
+        </div>
         <div class="mb-4">
           <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
             Nom d'utilisateur
@@ -33,12 +47,6 @@
           <input v-model="form.email" class="input-card" id="email" type="email" >
         </div>
 
-        <div class="mb-4">
-          <label class="block text-grey-darker text-sm font-bold mb-2" for="age">
-            age
-          </label>
-          <input v-model="form.age" class="input-card" id="age" type="number" >
-        </div>
 
         <div class="mb-6">
           <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
@@ -71,10 +79,10 @@ export default {
               form: {
                 name:null,
                 first_name: null,
+                birthDate: null,
                 username: null,
                 email: null,
                 password: null,
-                age: null,
               },
             response: '',
             state:{

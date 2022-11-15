@@ -1,12 +1,12 @@
 <template>
-  <div class="popup duration-200 flex m-auto m-1 font-medium py-1 px-2 bg-white rounded-md text-green-700 bg-green-100 border border-green-300 z-[2000]">
-    <div class="m-auto">
+  <div class="popup duration-200 flex m-auto m-1 font-medium py-2 px-4 bg-white rounded-2xl text-green-700 bg-green-50 border border-green-300 z-[2000]">
+    <div class="m-auto mr-2">
       <i class="fa-solid fa-check fa-xl "></i>
     </div>
     <div class="text-lg font-normal mx-2">
       {{ message }}
     </div>
-    <div class="m-auto">
+    <div class="m-auto ml-2">
       <button @click="closePopUp">
         <i class="fa-solid fa-close fa-xl "></i>
       </button>

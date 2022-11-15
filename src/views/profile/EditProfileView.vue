@@ -2,8 +2,9 @@
   <div class="container m-auto p-3">
     <h1 class="bold text-center text-2xl">Modifier Mon Compte</h1>
     <div class="border w-3/4 mx-auto my-4 border-fuchsia-800"></div>
-    <ErrorComponent v-if="state.error" :error="state.error"/>
-    <div class="fixed top-10 z-[2000] w-full">
+
+    <div class="hidden md:block fixed left-0 top-2 z-[2000] w-full">
+      <ErrorComponent class="w-max mx-auto" v-if="state.error" :error="state.error"/>
       <SuccessComponent class="w-max mx-auto" v-if="state.updated" message="Les informations ont bien été modifiées"/>
     </div>
 
@@ -37,13 +38,6 @@
             Date de Naissance
           </label>
           <input v-model="form.birthDate" class="input-simple" id="date" type="date" >
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-grey-darker text-sm font-bold mb-2" for="age">
-            Age
-          </label>
-          <input v-model="form.age" class="input-simple" id="age" type="number" >
         </div>
 
         <div class="mb-6">
@@ -80,7 +74,6 @@ export default {
         first_name: null,
         username: null,
         birthDate: null,
-        age: null,
         address: null
       },
       response: '',
@@ -114,6 +107,7 @@ export default {
       axios.post('api/profile/update', this.form).then(() =>{
         this.editProfile(store.getters.user.id);
         this.state.updated = true
+        this.state.error = null;
         setTimeout(()=>{this.state.updated = false},'3000')
       }).catch((error) => {
         this.state.error = error.response.data;

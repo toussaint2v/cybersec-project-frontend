@@ -24,7 +24,7 @@
                        value="Connexion"/>
       </div>
       <div class="flex justify-end mt-4">
-        <router-link class="text-purple-700 hover:text-purple-900" to="/reset-password/email/send">Reinitialiser mot de passe</router-link>
+        <router-link class="text-purple-500 font-bold hover:text-purple-700" to="/reset-password/email/send">Mot de passe oublié ?</router-link>
       </div>
 
       <div class="border my-3"></div>
