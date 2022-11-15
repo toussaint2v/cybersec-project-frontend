@@ -50,13 +50,31 @@ export default {
     return {
       form: {
         email: '',
-        password: ''
+        password: '',
+      },
+      confirmEmailForm: {
+        email: '',
+        confirm_email_token: '',
       },
       state: {
         error: null,
         success: false,
         loading: false
       },
+    }
+  },
+  async mounted() {
+    if (this.$route.query.confirmation_token){
+      this.confirmEmailForm.email = this.$route.query.email;
+      this.confirmEmailForm.confirm_email_token = this.$route.query.confirmation_token
+
+      await axios.post('api/confirm-email', this.confirmEmailForm).then((res) => {
+        console.log(res)
+      }).catch((err) => {
+        this.state.error = err.response.data
+      }).finally(() => {
+        this.state.loading = false;
+      });
     }
   },
   methods: {

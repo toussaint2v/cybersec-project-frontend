@@ -7,37 +7,37 @@
 
         <div class="flex mb-4">
           <div class="mr-2">
-            <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="nom">
               Nom
             </label>
-            <input v-model="form.name" class="input-card" id="name" type="text" >
+            <input v-model="form.name" class="input-card" id="nom" type="text" >
           </div>
           <div class="ml-2">
-            <label class="block text-grey-darker text-sm font-bold mb-2" for="firstName">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="prenom">
               Prénom
             </label>
-            <input v-model="form.first_name" class="input-card" id="firstName" type="text" >
+            <input v-model="form.first_name" class="input-card" id="prenom" type="text" >
           </div>
         </div>
         <div class="mb-4 flex">
           <div class="mr-2 w-full">
-            <label class=" block text-grey-darker text-sm font-bold mb-2" for="name">
+            <label class=" block text-grey-darker text-sm font-bold mb-2" for="adresse">
               Adresse
             </label>
-            <input v-model="form.address" class="input-card" id="address" type="text" >
+            <input v-model="form.address" class="input-card" id="adresse" type="text" >
           </div>
           <div class="ml-2 ">
-            <label class="block text-grey-darker text-sm font-bold mb-2" for="birthDate">
+            <label class="block text-grey-darker text-sm font-bold mb-2" for="dateNaiss">
               Date de Naissance
             </label>
-            <input v-model="form.birthDate" class="input-card" id="birthDate" type="date" >
+            <input v-model="form.birthDate" class="input-card" id="dateNaiss" type="date" >
           </div>
         </div>
         <div class="mb-4">
-          <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
+          <label class="block text-grey-darker text-sm font-bold mb-2" for="nom">
             Nom d'utilisateur
           </label>
-          <input v-model="form.username" class="input-card" id="username" type="text" >
+          <input v-model="form.username" class="input-card" id="nom" type="text" >
         </div>
 
         <div class="mb-4">
@@ -95,6 +95,7 @@ export default {
       methods: {
         async createProfile() {
           await axios.post('api/profile/store', JSON.stringify(this.form)).then((res) => {
+            console.log(res)
             this.response = res
             this.state.success = true;
             store.commit('unauthenticateUser');
