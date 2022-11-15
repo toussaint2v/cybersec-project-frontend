@@ -34,10 +34,10 @@
           </div>
         </div>
         <div class="mb-4">
-          <label class="block text-grey-darker text-sm font-bold mb-2" for="nom">
+          <label class="block text-grey-darker text-sm font-bold mb-2" for="nom_utilisateur">
             Nom d'utilisateur
           </label>
-          <input v-model="form.username" class="input-card" id="nom" type="text" >
+          <input v-model="form.username" class="input-card" id="nom_utilisateur" type="text" >
         </div>
 
         <div class="mb-4">
@@ -68,7 +68,6 @@
 <script>
 import axios from "@/api/axios";
 import ErrorComponent from "@/components/alert/ErrorComponent";
-import store from "@/store";
 import router from "@/router";
 
 
@@ -98,8 +97,10 @@ export default {
             console.log(res)
             this.response = res
             this.state.success = true;
-            store.commit('unauthenticateUser');
-            router.push('/login')
+            router.push({
+              name: 'login',
+              query: { newUser: true }
+            })
           }).catch((error) => {
             this.state.error = error.response.data;
           }).finally(() => {
